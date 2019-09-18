@@ -24,7 +24,7 @@
     Is Alive: <input type="checkbox" name="student_isalive">
     <br/>
     <br/>
-    <input type="submit">
+    <input type="submit" class="btn btn-primary" value="Submit">
 
 </form>
 

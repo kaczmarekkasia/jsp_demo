@@ -20,16 +20,18 @@
         <th>Subject</th>
         <th>Added date</th>
         <th>Value</th>
+        <th></th>
     </tr>
     <%
         List<Grade> gradeList = (List<Grade>) request.getAttribute("lista ocen");
 
         for (Grade grade : gradeList) {
             out.print("<tr>");
-            out.print("<th>" + grade.getId()+ "</th>");
-            out.print("<th>" + grade.getSubject()+ "</th>");
-            out.print("<th>" + grade.getDateAdded()+ "</th>");
-            out.print("<th>" + grade.getValue()+ "</th>");
+            out.print("<td>" + grade.getId()+ "</td>");
+            out.print("<td>" + grade.getSubject()+ "</td>");
+            out.print("<td>" + grade.getDateAdded().withNano(0)+ "</td>");
+            out.print("<td>" + grade.getValue()+ "</td>");
+            out.print("<td></td>");
             out.print("</tr>");
         }
 

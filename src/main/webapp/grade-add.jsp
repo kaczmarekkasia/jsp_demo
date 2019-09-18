@@ -24,22 +24,10 @@
                 <option value="PHYSICS">PHYSICS</option>
             </select>
     <br/>
-    Value:  <select name="grade_value">
-                <option>1.0</option>
-                <option>1.5</option>
-                <option>2.0</option>
-                <option>2.5</option>
-                <option>3.0</option>
-                <option>3.5</option>
-                <option>4.0</option>
-                <option>4.5</option>
-                <option>5.0</option>
-                <option>5.5</option>
-                <option>6.0</option>
-            </select>
+    Value:  <input type="number" min="2" max="6" step="0.5" name="grade_value">
     <br/>
     <br/>
-    <input type="submit">
+    <input type="submit" class="btn btn-primary" value="Submit" >
 </form>
 </body>
 </html>
