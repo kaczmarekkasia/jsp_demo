@@ -22,14 +22,14 @@ public class StudentAddServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("student_name");
-        String lastname = req.getParameter("student_lastname");
+        String surname = req.getParameter("student_lastname");
         int age = Integer.parseInt(req.getParameter("student_age"));
 
         String alive = req.getParameter("student_isalive");
         boolean isAlive = (alive != null && alive.equalsIgnoreCase("on"));
 
         // przekazujemy parametry do serwisu
-        studentService.addStudent(name, lastname, age, isAlive);
+        studentService.addStudent(name, surname, age, isAlive);
 
         resp.sendRedirect("/student-list");
     }

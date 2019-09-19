@@ -1,12 +1,15 @@
 <%@ page import="model.Grade" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.time.format.DateTimeFormatter" %><%--
   Created by IntelliJ IDEA.
   User: so-vi
   Date: 18.09.2019
   Time: 14:06
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Grade List</title>
@@ -14,6 +17,7 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<jsp:include page="/navigator.jsp"/>
 <table class="table table-striped">
     <tr>
         <th>Id</th>
@@ -22,20 +26,16 @@
         <th>Value</th>
         <th></th>
     </tr>
-    <%
-        List<Grade> gradeList = (List<Grade>) request.getAttribute("lista ocen");
-
-        for (Grade grade : gradeList) {
-            out.print("<tr>");
-            out.print("<td>" + grade.getId()+ "</td>");
-            out.print("<td>" + grade.getSubject()+ "</td>");
-            out.print("<td>" + grade.getDateAdded().withNano(0)+ "</td>");
-            out.print("<td>" + grade.getValue()+ "</td>");
-            out.print("<td></td>");
-            out.print("</tr>");
-        }
-
-    %>
+    <%--jstl--%>
+    <c:forEach var="ocena" items="${requestScope.lista_ocen}">
+        <tr>
+            <td>${ocena.getId()}</td>
+            <td>${ocena.getValue()}</td>
+            <td>${ocena.getDateAdded().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))}</td>
+            <td>${ocena.getSubject()}</td>
+            <td></td>
+        </tr>
+    </c:forEach>
 
 </table>
 

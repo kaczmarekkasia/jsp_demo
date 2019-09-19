@@ -5,7 +5,9 @@
   Time: 14:21
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Add Grade</title>
@@ -13,7 +15,9 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<jsp:include page="/navigator.jsp"/>
 <form action="/grade-add" method ="post">
+    <input type="hidden" name="student_to_whom_i_should_give_grade_to" value="${requestScope.studentId}">
     Subject: <select name="grade_subject">
                 <option value="ENGLISH">English</option>
                 <option value="POLISH">Polish</option>

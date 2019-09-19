@@ -6,7 +6,9 @@
   Time: 19:13
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Add Student</title>
@@ -14,17 +16,21 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<form action="/student-add" method="post">
-    Name: <input type="text" name="student_name">
+<jsp:include page="/navigator.jsp"/>
+<%--to pod spodem to skrócony zapis if'a -> jesli student jest albo go nie ma--%>
+<form action="${requestScope.studentId==null ?'/student-add' : '/student-edit'}" method="post">
+    <input type="hidden" name="student_id" value="${requestScope.studentId}">
+
+    Name: <input type="text" name="student_name" value="${requestScope.studentName}">
     <br/>
-    Surname: <input type="text" name="student_lastname">
+    Surname: <input type="text" name="student_lastname" value="${requestScope.studentSurname}">
     <br/>
-    Age: <input type="number" name="student_age">
+    Age: <input type="number" name="student_age" value="${requestScope.studentAge}">
     <br/>
-    Is Alive: <input type="checkbox" name="student_isalive">
+    Is Alive: <input type="checkbox" name="student_isalive" checked="${requestScope.studentIsAlive==true ? 'checked' : ''}">
     <br/>
     <br/>
-    <input type="submit" class="btn btn-primary" value="Submit">
+    <input type="submit" class="btn btn-secondary" value="Submit">
 
 </form>
 

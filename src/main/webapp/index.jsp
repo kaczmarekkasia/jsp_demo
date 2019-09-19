@@ -4,7 +4,10 @@
 <head>
     <link rel="stylesheet" href="/style.css">
 </head>
+
+
 <body>
+<jsp:include page="/navigator.jsp"/>
 <h2>Tabliczka mnożenia</h2>
 <form action="index.jsp" method="post">
     Rozmiar X: <input type="number" min="1" name="x">
